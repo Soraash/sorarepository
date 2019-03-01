@@ -1,27 +1,67 @@
-package SIMPLE;
+package lab1;
 
-public class Student {
-
-	int id;
+public class Student 
+{
+	 int id;
 	String name;
-	float percentage;
+	 Reportcard rc;
+	
+ Exam[] exam;
+	 
+	 public Student()
+	 {
+		 
+	 }
 
-	public Student(int id, String name, float percentage) 
+	public Student(int id, String name ) 
 	{
-		super();
+		
 		this.id = id;
 		this.name = name;
-		this.percentage = percentage;
+		
+	}
+	
+	public int getId() {
+		return id;
 	}
 
-	public void print() 
-	{
-		System.out.println("id="+ id);
-		System.out.println("name="+ name);
-		System.out.println("percentage="+ percentage);
-		
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	
 
+	public void printStudent()
+	{
+		System.out.println("studentid="+id);
+		System.out.println("studentname="+name);
+		rc.printGrade();
+		for (Exam exams : exam)
+		{
+		exams.printExam();
+       }
+	}
+	public void calper()
+	{
+		float totalmarks=0.0f;
+		float  grandtotal=0.0f;
+		
+		for (Exam exams : exam) 
+		{
+		totalmarks+=exams.max_marks;
+		grandtotal+=exams.obtained_marks;
+		}
+		rc.percentage=grandtotal/totalmarks*100.0f;
+		rc.calGrade();
+		
+		
+	}
 }
